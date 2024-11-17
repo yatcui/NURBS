@@ -1,0 +1,22 @@
+Option Explicit
+
+Call PrintSurfaceControlPoints()
+
+Sub PrintSurfaceControlPoints()
+	Dim strSurface	
+	strSurface = Rhino.GetObject("Select surface", 8)
+	If IsNull(strSurface) Then Exit Sub
+
+	Dim arrPoints
+	arrPoints = Rhino.SurfacePoints(strSurface)
+	If Not IsArray(arrPoints) Then Exit Sub
+
+	Dim i
+	i = 0
+	Dim strCP
+	For i = 0 To UBound(arrPoints)
+		strCP = strCP & i + 1 & vbTab & Rhino.Pt2Str(arrPoints(i), 3) & VbCrLf
+	Next
+	Rhino.Print strCP
+	Rhino.MessageBox strCP, 0, "Control Points"
+End Sub
