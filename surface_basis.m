@@ -15,7 +15,8 @@ knotsU = {0.,0.,0.,0.,0.,0.,0.,0.,1.,1.,1.,1.,1.,1.,1.,1.};
 knotsV = {0.,0.,0.,0.,0.,0.,1.,1.,1.,1.,1.,1.};
 
 (* 
-Define the parameter values u and v.
+Parameter values u and v for point on surface
+-432.11540229364914, 263.0404685883425, 92.87925745418916`
 Can be found in Rhino3D with "EvaluateUVPt"
 *)
 u = 0.43;
@@ -30,5 +31,3 @@ basisFunctionValue = Outer[Times, basisU, basisV]
 
 (* Output the basis functions *)
 basisFunctionValue[[4]][[2]]
-
-
