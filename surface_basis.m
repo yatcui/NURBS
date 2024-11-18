@@ -17,7 +17,7 @@ knotsV = {0.,0.,0.,0.,0.,0.,1.,1.,1.,1.,1.,1.};
 (* 
 Parameter values u and v for point on surface
 -432.11540229364914, 263.0404685883425, 92.87925745418916`
-Can be found in Rhino3D with "EvaluateUVPt"
+Can be found in Rhino3D with "EvaluateUVPt".
 *)
 u = 0.43;
 v = 0.19;
