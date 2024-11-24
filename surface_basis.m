@@ -23,11 +23,23 @@ u = 0.43;
 v = 0.19;
 
 (* Calculate the basis functions for u and v *)
-basisU = Table[BSplineBasis[{degreeU, knotsU}, i, u], {i, 0, Length[knotsU] - degreeU - 2}];
-basisV = Table[BSplineBasis[{degreeV, knotsV}, j, v], {j, 0, Length[knotsV] - degreeV - 2}];
+basisU = Table[BSplineBasis[{degreeU, knotsU}, i, u], {i, 0, Length[knotsU] - degreeU - 2}]
+basisV = Table[BSplineBasis[{degreeV, knotsV}, j, v], {j, 0, Length[knotsV] - degreeV - 2}]
 
 (* The rational B-spline basis function is the product of the basis functions in each direction *)
 basisFunctionValue = Outer[Times, basisU, basisV]
 
 (* Output the basis functions *)
 basisFunctionValue[[4]][[2]]
+basisU[[4]]
+basisV[[2]]
+basisU[[4]] * basisV[[2]]
+(* Note: Indexing the List starts at 1, but input for basis function starts at zero. *)
+BSplineBasis[{degreeU, knotsU}, 3, u] * BSplineBasis[{degreeV, knotsV}, 1, v]
+
+
+
+
+
+(* ::Input:: *)
+(**)
