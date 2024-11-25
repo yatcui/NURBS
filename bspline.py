@@ -19,6 +19,10 @@ def bspline_basis(p, U, i, u):
         i = 3
         u = 0.43
         bu = bspline_basis(p, U, i, u)
+
+    Note:
+        1st and last knot are duplicated as compared to the OpenNURBS
+        (Rhino3D) convention.
     
     Args:
         p (int): Degree of basis function.
@@ -29,7 +33,16 @@ def bspline_basis(p, U, i, u):
     Returns:
         float: basis function value.
 
+    Raises:
+        ValueError: In case number of knots does not match degree.
+
     """
+    if not (len(U) == 2 * (p+1)):
+        msg = f"Number of knots {len(U)} does not match degree {p}."
+        msg += f" Should be {2 * (p+1)}."
+        msg += "\nEnd knots not duplicated (NURBS Book convention)?"
+        raise ValueError(msg)
+
     m = len(U) - 1
     # Special cases
     if (i == 0 and u == U[0]) or (i == m-p-1 and u == U[m]):
@@ -80,5 +93,4 @@ if __name__ == "__main__":
     print(f"Knots in V: {V}")
     print(f"Degree in u, v: {p}, {q}")
     print(f"u, v = {u}, {v}")
-    print()
     print(f"N_{i},{k}({u}, {v}) = {buv:.6f}")
